@@ -1,7 +1,7 @@
 /* JS Proxy pattern. */
 
 const powerSupply = {
-	product: "Apowking",
+  product: "Apowking",
   wattage: 100,
   voltage: 110,
   batteryCapacity: 39600,
@@ -9,16 +9,16 @@ const powerSupply = {
 
 // Get original object and handler object.
 const powerSupplyProxy = new Proxy(powerSupply, {
-	set: (target, prop, value) => {
-  	const prevValue = target[prop];
-    console.log(prevValue);
+  set: (target, prop, value) => {
+  const prevValue = target[prop];
+  console.log(prevValue);
     
     // target[prop] = value;
     Reflect.set(target, prop, value);
-    },
+  },
   get: (target, prop) => {
-		const value = target[prop];
-		if (value === undefined) console.log("Info not found!");
+    const value = target[prop];
+    if (value === undefined) console.log("Info not found!");
     
     // Return value if found.
     return Reflect.get(target, prop);
